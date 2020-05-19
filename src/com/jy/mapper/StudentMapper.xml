@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.jy.mapper.StudentMapper">
+  
+  <!-- 登陆 -->
+	<select id="loginCheck" resultType="User">
+	
+	select * from user where username=#{username} and password=#{password};
+  
+  	</select>
+  <!-- 查询 -->
+  <select id="selectAll" resultType="Student">
+		select * from student;	
+	</select>
+	<!-- 查询 -->
+  <select id="studentAll" resultType="Student">
+		select * from student;	
+	</select>
+  
+  <!-- 查询一个 user-->
+	<select id="selectUserByName" resultType="User">
+		select * from user where username = #{username};
+	</select>
+	<!-- 修改操作 -->
+	<update id="updateUser">
+		update user  set username=#{username}, password=#{password} where username = #{username} ;
+	</update>
+	
+	 <!-- 查询一个student -->
+	<select id="selcteStudentById" resultType="Student">
+		select * from student where id=#{id};	
+	</select>
+	
+	<!-- 修改一个score -->
+  <update id="updateScore" >
+	update student set math=#{math},english=#{english},computer=#{computer} where id=#{id};
+	</update>
+	<!-- 修改一个student -->
+  <update id="updateStudent" >
+	update student set name=#{name},number=#{number},time=#{time},classnumber=#{classnumber},identity=#{identity},politic=#{politic} where id=#{id};
+	</update>
+  
+  <!-- 添加 -->
+	<insert id="addStudent">
+		insert into student (number,name,time,math,english,computer,identity,politic,classnumber ) values
+		(#{number},#{name},#{time},#{math},#{english},#{computer},#{identity},#{politic},#{classnumber});	
+	</insert>
+  
+  
+  
+  
+  
+  
+  </mapper>
